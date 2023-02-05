@@ -1,10 +1,11 @@
 import CrownIcon from '../../images/crown.png';
 import { getIcon } from './Character';
 
-export const Badge = ({isWinner, character, name, num}: {
+export const Badge = ({isWinner, character, name, num, points}: {
   isWinner: boolean,
   character: string,
   name: string,
+  points: number,
   num: number}) => {
   const color = num ? "#f15959" : "#6565FE";
 
@@ -16,6 +17,11 @@ export const Badge = ({isWinner, character, name, num}: {
       </div>
       {isWinner && (
         <div className="absolute -top-2 right-0">
+          <img src={CrownIcon} height={32} width={32} />
+        </div>
+      )}
+      {isWinner && points === 2 && (
+        <div className="absolute -top-2 right-2">
           <img src={CrownIcon} height={32} width={32} />
         </div>
       )}
