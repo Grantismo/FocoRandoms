@@ -15,10 +15,12 @@ interface Result {
   p4Character: string
 }
 
+const TEAM_1_DEFAULT = "Team 1"
+const TEAM_2_DEFAULT = "Team 2"
 export default function HomePage() {
-  const [team1Name, setTeam1Name] = useState("")
+  const [team1Name, setTeam1Name] = useState(TEAM_1_DEFAULT)
   const [team1Score, setTeam1Score] = useState(0)
-  const [team2Name, setTeam2Name] = useState("")
+  const [team2Name, setTeam2Name] = useState(TEAM_2_DEFAULT)
   const [team2Score, setTeam2Score] = useState(0)
   const [player1Character, setPlayer1Charcter] = useState("")
   const [player2Character, setPlayer2Charcter] = useState("")
@@ -58,6 +60,23 @@ export default function HomePage() {
     }
     shuffle();
   }
+
+  const changeName1 = (name: string) => {
+    if(!name) {
+      setTeam1Name(TEAM_1_DEFAULT)
+      return
+    }
+    setTeam1Name(name)
+  }
+
+  const changeName2 = (name: string) => {
+    if(!name) {
+      setTeam2Name(TEAM_2_DEFAULT)
+      return
+    }
+    setTeam2Name(name)
+  }
+
 
   const resultPanel = () => {
     return <div className="flex flex-col items-center justify-center">
@@ -122,9 +141,9 @@ export default function HomePage() {
           </button>
         </div>
         <div className="flex mb-4 items-center justify-center">
-          <Player score={team1Score} onScoreChange={setTeam1Score} character={player1Character} character2={player3Character} onNameChange={(name: string) => setTeam1Name(name)} tandems={tandems} />
+          <Player score={team1Score} onScoreChange={setTeam1Score} character={player1Character} character2={player3Character} onNameChange={changeName1} tandems={tandems} />
           <span className="title text-8xl">VS</span>
-          <Player score={team2Score} onScoreChange={setTeam2Score} character={player2Character} character2={player4Character} onNameChange={(name: string) => setTeam2Name(name)} tandems={tandems} />
+          <Player score={team2Score} onScoreChange={setTeam2Score} character={player2Character} character2={player4Character} onNameChange={changeName2} tandems={tandems} />
         </div>
         {team1Name && team2Name && resultPanel()}
       </div>
