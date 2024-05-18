@@ -26,6 +26,7 @@ import OnettIcon from "../../images/stages/onett.jpeg"
 import MuteCityIcon from "../../images/stages/mute_city.jpeg"
 import TempleIcon from "../../images/stages/temple.png"
 import DreamlandIcon from "../../images/stages/dreamland.png"
+import JungleFallsIcon from "../../images/stages/jungle_falls.png"
 import { Tooltip } from "react-tooltip";
 
 const stageNameToIcon = new Map([
@@ -57,7 +58,8 @@ const stageNameToIcon = new Map([
   ["YOSHIS_ISLAND_N64", YoshisIsland64Icon],
   ["KONGO_JUNGLE_N64", KongoJungleIcon],
   ["BATTLEFIELD", BattleFieldIcon],
-  ["FINAL_DESTINATION", FinalDestinationIcon]
+  ["FINAL_DESTINATION", FinalDestinationIcon],
+  ["JUNGLE_FALLS", JungleFallsIcon]
 ]);
 const stages = [...stageNameToIcon.keys()];
 
