@@ -4,6 +4,7 @@ import { Player } from '../../../components/Player';
 import { Badge } from '../../../components/Badge';
 import { randCharacter, getIcon as getCharacterIcon } from '../../../components/Character';
 import { randStage, getIcon as getStageIcon} from '../../../components/Stage';
+import { Tooltip } from 'react-tooltip'
 
 interface Result {
   stage: string
@@ -14,6 +15,43 @@ interface Result {
   p3Character: string
   p4Character: string
 }
+
+const GECKO_CODE = `$Foco Randoms - 1 stock, 3 minutes [Krohnos, blorppppp]
+*Compatible with Slippi Direct. Does not take effect in Unranked. v1.0
+C216E91C 00000013
+3CE08048 80E79D30
+54E7443E 2C070202
+41820038 886DAFA0
+2C030000 41820070
+2C030001 41820068
+3CE08048 80E79D30
+54E7443E 2C070208
+41820010 2C07010E
+41820008 48000048
+38600001 3C808045
+6084310E 98640000
+3C808045 60843F9E
+98640000 3C808045
+60844E2E 98640000
+3C808045 60845CBE
+98640000 3860012C
+3C808046 6084DB78
+98640000 80010024
+60000000 00000000
+C216E750 0000000C
+3E208048 82319D30
+5631443E 2C110202
+41820038 8A2DAFA0
+2C110000 4182003C
+2C110001 41820034
+3E208048 82319D30
+5631443E 2C110208
+41820010 2C11010E
+41820008 48000014
+3A4000B4 3E808048
+62940540 92540000
+3C808017 00000000`;
+
 
 const TEAM_1_DEFAULT = "Team 1"
 const TEAM_2_DEFAULT = "Team 2"
@@ -126,9 +164,14 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col items-center justify-center p-4">
+      <Tooltip id="gecko" place="bottom"  clickable className="whitespace-pre z-50 !opacity-100">
+        <textarea className="box-content text-black w-96 p-2 font-mono" rows={10} defaultValue={GECKO_CODE} />
+      </Tooltip>
+      <a data-tooltip-id="gecko" className="text-teal-500 font-mono text-lg mb-4">{"{gecko code}"}</a>
       <h1 className="flex flex-col items-center justify-center title uppercase text-5xl text-center text-white mb-8">
         <div>Foco {tandems ? <span className="text-red-800 line-through">Randoms</span>: 'Randoms'}</div>
         {tandems && <div>Tandems</div>}
+        
       <label className="relative inline-flex items-center cursor-pointer m-4">
         <input type="checkbox" checked={tandems} onChange={toggleTandems} className="sr-only peer" />
           <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600"></div>

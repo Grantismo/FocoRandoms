@@ -1,14 +1,22 @@
 import React from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
 import HomePage from './routes/home/HomePage';
 import settings from '../../settings';
+import ReactDOM from 'react-dom/client';
+import {
+  createHashRouter,
+  RouterProvider
+} from 'react-router-dom';
+
 
 export default function App() {
+
+const router = createHashRouter([
+  {
+    path: "/*",
+    element: <HomePage />,
+  }
+]);
   return (
-    <HashRouter basename={settings.repoPath}>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-      </Switch>
-    </HashRouter>
+    <RouterProvider router={router} />
   );
 }
